@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { actionRemoveExpense } from '../actions';
+import { actionRemoveExpense, actionEditExpense } from '../actions';
 
 class ExpenseTable extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class ExpenseTable extends Component {
   }
 
   render() {
-    const { expenses, removeExpenseStore } = this.props;
+    const { expenses, removeExpenseStore, editExpenseStore } = this.props;
     return (
       <thead>
         <tr>
@@ -62,7 +62,7 @@ class ExpenseTable extends Component {
                 type="button"
                 value={ index }
                 data-testid="edit-btn"
-                onClick={ () => console.log('Editar') } // REQUISITO 11
+                onClick={ editExpenseStore } // REQUISITO 11
               >
                 Editar
               </button>
@@ -77,6 +77,7 @@ class ExpenseTable extends Component {
 ExpenseTable.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   removeExpenseStore: PropTypes.func.isRequired,
+  editExpenseStore: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -86,6 +87,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   removeExpenseStore: ({ target: { value: index } }) => (
     dispatch(actionRemoveExpense(index))
+  ),
+  editExpenseStore: ({ target: { value: index } }) => (
+    dispatch(actionEditExpense(index))
   ),
 });
 

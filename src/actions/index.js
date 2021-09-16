@@ -8,6 +8,7 @@ import {
   GET_API_EXCHANGE_RATES_SUCCESS,
   GET_API_EXCHANGE_RATES_ERROR,
   REMOVE_EXPENSE,
+  EDIT_EXPENSE,
 } from './actionTypes';
 
 export const actionGetEmail = (value) => ({ type: GET_EMAIL, payload: value });
@@ -57,5 +58,10 @@ export const actionFetchApiExchangeRates = (state) => (dispatch) => {
 
 export const actionRemoveExpense = (index) => ({
   type: REMOVE_EXPENSE,
+  payload: index,
+});
+
+export const actionEditExpense = (index) => ({
+  type: EDIT_EXPENSE,
   payload: index,
 });

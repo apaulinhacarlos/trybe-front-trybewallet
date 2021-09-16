@@ -4,6 +4,7 @@ import {
   GET_API_ERROR,
   ADD_EXPENSE,
   REMOVE_EXPENSE,
+  EDIT_EXPENSE,
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
@@ -12,6 +13,7 @@ const INITIAL_STATE = {
   isFetching: false,
   error: '',
   totalExpense: 0,
+  edit: false,
 };
 
 const addExpense = (state, payload, responseAPI) => {
@@ -86,6 +88,16 @@ const wallet = (state = INITIAL_STATE, action) => {
       ...state,
       expenses: removeExpense(state, action.payload),
       totalExpense: parseFloat(subExpenses(state, action.payload)),
+      edit: false,
+      // parseFloat analisa um argumento string e retorna um numero de ponto flutuante.
+    };
+
+  case EDIT_EXPENSE:
+    return {
+      ...state,
+      edit: true,
+      // expenses: editExpense(state, action.payload), ??
+      // totalExpense: parseFloat(subExpenses(state, action.payload)),
     };
 
   default:
