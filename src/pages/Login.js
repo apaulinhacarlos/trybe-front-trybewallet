@@ -26,6 +26,9 @@ class Login extends Component {
     this.setState({
       [name]: value,
     }, () => this.isValid());
+    // O segundo parâmetro de setState() é uma função de callback opcional
+    // que é executada assim que setState for completada
+    // e o componente re-renderizado
   }
 
   handleSubmit() {

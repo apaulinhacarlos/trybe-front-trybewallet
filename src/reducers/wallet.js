@@ -36,9 +36,13 @@ const subExpenses = (state, action) => {
   const askNumber = +ask;
   const { value } = id;
   const valueNumber = +value;
-  const convertedValue = valueNumber * askNumber;
+  const convertedValue = (valueNumber * askNumber).toFixed(2);
+  const numberConvertedValue = +convertedValue;
   const { totalExpense } = state;
-  const result = totalExpense - convertedValue;
+  const totalExpenseFixed = totalExpense.toFixed(2);
+  const numberTotalExpenseFixed = +totalExpenseFixed;
+  const result = numberTotalExpenseFixed - numberConvertedValue;
+  console.log(result);
   return result;
 };
 
@@ -60,6 +64,7 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       currencies: action.payload,
+      isFetching: false,
     };
 
   case GET_API_ERROR:
