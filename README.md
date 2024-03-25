@@ -52,6 +52,8 @@ npm install
 
 Inicialize o projeto no browser com o comando `npm start`:
 
+⚠️ Importante: Utilize a versão 16 do Node.
+
 ```bash
 npm start
 ```
