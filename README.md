@@ -56,12 +56,6 @@ Inicialize o projeto no browser com o comando `npm start`:
 npm start
 ```
 
-Por fim, utilize o comando `npm test` para fazer os testes.
-
-```bash
-npm test
-```
-
 ---
 
 ## Requisitos
